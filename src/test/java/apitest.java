@@ -52,7 +52,15 @@ public class apitest {
         given()
                 .header("clientId" , "110")
                 .get("http://localhost:8080/api/v1/").then().assertThat().statusCode(200).and().assertThat().contentType(ContentType.JSON).log().all();
-                
+
+    }
+
+    @Test (priority = 7)
+    public  static void rest7 (){
+        //Get request with expected with assertion content-type validation [XML Form]//
+            given()
+                    .header("clientId" , "110")
+                    .get("http://localhost:8080/api/v1/").then().assertThat().statusCode(200).and().assertThat().contentType(ContentType.XML).log().all();
     }
 
 }
