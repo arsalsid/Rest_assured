@@ -1,6 +1,4 @@
 import org.testng.annotations.Test;
-
-import static io.restassured.RestAssured.config;
 import static io.restassured.RestAssured.given;
 
 
@@ -30,11 +28,20 @@ public class apitest {
 
     @Test (priority = 4)
     public static void  rest4(){
-        //Get request with multiple header//
+        //Get request with expected with assertion statuscode //
         given()
                 .header("id" , "110")
                 .header("email" ,  "arsal243@gmail.com")
-                .get("http://www.mocky.io/v2/5ece93c43000004f00ea1349").then().log().all();
+                .get("http://www.mocky.io/v2/5ece93c43000004f00ea1349").then().assertThat().statusCode(200).log().all();
 
+    }
+
+    @Test (priority = 5)
+    public static void rest5(){
+        //Get request with expected without assertion statuscode //
+        given()
+                .header("id" , "110")
+                .header("email" , "admin@gmail.com")
+                .get("http://www.mocky.io/v2/5ece93c43000004f00ea1349").then().statusCode(400).log().all();
     }
 }
