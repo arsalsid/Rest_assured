@@ -11,13 +11,10 @@ public class SampleTest {
     @Test (priority = 1)
     public static void method2()
     {
-
         for (int i = 1; i <= 4; i++) {
 
             System.out.println("Germany");
-
         }
-
     }
 
     public static void main(String[] args) {
