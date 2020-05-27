@@ -1,3 +1,4 @@
+import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
@@ -44,4 +45,14 @@ public class apitest {
                 .header("email" , "admin@gmail.com")
                 .get("http://www.mocky.io/v2/5ece93c43000004f00ea1349").then().statusCode(400).log().all();
     }
+
+    @Test (priority = 6)
+    public static void rest6(){
+        //Get request with expected with assertion content-type validation//
+        given()
+                .header("clientId" , "110")
+                .get("http://localhost:8080/api/v1/").then().assertThat().statusCode(200).and().assertThat().contentType(ContentType.JSON).log().all();
+                
+    }
+
 }
